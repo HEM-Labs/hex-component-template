@@ -1,0 +1,47 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task -l
+
+  # Project management
+
+  update:
+    desc: Update the repo from upstream
+    cmds:
+      - git pull
+
+  version:
+    desc: Show the current project version
+    cmds:
+      - cat VERSION
+
+  push:
+    desc: Push commits and tags to GitHub
+    cmds:
+      - git push && git push --tags
+
+  # Container
+
+  build:
+    desc: Build the container image
+    cmds:
+      - docker compose build TEMPLATE_SERVICE_NAME
+
+  run:
+    desc: Run the container in the foreground
+    cmds:
+      - docker compose up --build TEMPLATE_SERVICE_NAME
+
+  start:
+    desc: Run the container as a detached service
+    env:
+      TEMPLATE_RESTART: unless-stopped
+    cmds:
+      - docker compose up -d --build TEMPLATE_SERVICE_NAME
+
+  stop:
+    desc: Stop the detached container service
+    cmds:
+      - docker compose stop TEMPLATE_SERVICE_NAME

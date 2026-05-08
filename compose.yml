@@ -1,0 +1,13 @@
+services:
+  TEMPLATE_SERVICE_NAME:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: ${TEMPLATE_IMAGE_ENV:-ghcr.io/TEMPLATE_GHCR_OWNER/TEMPLATE_IMAGE_NAME:latest}
+    container_name: TEMPLATE_CONTAINER_NAME
+    # noinspection ComposeUnknownValues
+    restart: ${TEMPLATE_RESTART:-no}
+
+volumes:
+  template-data:
+    name: TEMPLATE_REPOSITORY_NAME-data
