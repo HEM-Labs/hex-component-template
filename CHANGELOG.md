@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added example down commands for removing a component stack without deleting volumes.
+
 ### Changed
 
 - Reworked third-party notices as fill-in examples instead of formal template strings.

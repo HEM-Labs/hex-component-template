@@ -45,3 +45,8 @@ tasks:
     desc: Stop the detached container service
     cmds:
       - docker compose stop TEMPLATE_SERVICE_NAME
+
+  down:
+    desc: Remove the container stack without deleting volumes
+    cmds:
+      - docker compose down

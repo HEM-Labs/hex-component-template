@@ -43,6 +43,14 @@ Stop detached service mode:
 stop.bat
 ```
 
+Remove the container stack when it is no longer needed:
+
+```bat
+down.bat
+```
+
+This removes the component containers and Compose network. It does not delete Docker volumes; component-specific persistent data removal should be documented separately when needed.
+
 The batch files use the same `compose.yml` as development, but run with `--no-build` so Docker uses the published GHCR image.
 
 ## Develop
@@ -59,6 +67,7 @@ Useful development commands:
 task build
 task start
 task stop
+task down
 task update
 task version
 ```
@@ -110,7 +119,7 @@ AI-assisted unpacking should treat this template as a starting point, not as a s
 When adapting the template, preserve the Hex conventions where they still apply:
 
 - Published image names use `ghcr.io/TEMPLATE_GHCR_OWNER/TEMPLATE_IMAGE_NAME`.
-- Windows entry points are `run.bat`, `start.bat`, and `stop.bat`.
+- Windows entry points are `run.bat`, `start.bat`, `stop.bat`, and `down.bat`.
 - The release workflow publishes versioned `x.y.z` and `x.y` tags from `master`.
 - Runtime integration details belong in the README contract section and `compose.yml`, not only in scripts.
 
