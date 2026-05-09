@@ -27,7 +27,8 @@ rg "TEMPLATE_"
 Also review:
 
 - `LICENSE` copyright owner and year.
-- `CHANGELOG.md` release entries.
+- `THIRD_PARTY.md` example notices, licenses, bundled refs, and unused sections.
+- `CHANGELOG.md` template release entries; replace them with component release entries after cloning.
 - `docker/Dockerfile` base image, copied files, entrypoint, and command.
 - `compose.yml` volumes, ports, environment, dependencies, and restart policy.
 - Batch files if the service should expose more than foreground, detached, and stop commands.

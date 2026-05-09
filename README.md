@@ -7,6 +7,8 @@
 
 TEMPLATE_PROJECT_DESCRIPTION
 
+If this image bundles or redistributes third-party software, see [THIRD_PARTY.md](THIRD_PARTY.md) for upstream attribution.
+
 This is a Hex container repository. For the wider architecture, contracts, naming conventions, and release expectations, see the main [Hex](https://github.com/HEM-Labs/hex) repository.
 
 ## Contract
@@ -90,4 +92,30 @@ The workflow updates `VERSION`, commits the release metadata, tags that commit a
 
 ## Template Setup
 
-After cloning this template, replace every `TEMPLATE_*` string listed in [TEMPLATE_STRINGS.md](TEMPLATE_STRINGS.md).
+This repository is a copy-and-adapt template, not a generated project. After cloning it for a new component, use the surrounding files as examples and adapt them to the component being packaged.
+
+At minimum:
+
+- Replace every `TEMPLATE_*` string listed in [TEMPLATE_STRINGS.md](TEMPLATE_STRINGS.md), then verify with `rg "TEMPLATE_"`.
+- Replace this README with component-specific runtime, development, image, and release details.
+- Review `docker/Dockerfile`, `docker/entrypoint.sh`, `compose.yml`, `taskfile.yml`, and the batch files against the component's actual runtime behavior.
+- Review [THIRD_PARTY.md](THIRD_PARTY.md), replace the examples with actual third-party notices, and delete unused sections.
+- Update `LICENSE` with the correct copyright owner and year.
+- Run the relevant local checks for the final component, usually `docker compose config`, `task build`, and `task run`.
+
+### Agent Notes
+
+AI-assisted unpacking should treat this template as a starting point, not as a strict text substitution target. The retained `TEMPLATE_*` strings cover stable repository identifiers; component-specific content such as third-party notices, runtime contracts, ports, volumes, environment variables, health checks, and dependency versions should be written from the component's actual behavior.
+
+When adapting the template, preserve the Hex conventions where they still apply:
+
+- Published image names use `ghcr.io/TEMPLATE_GHCR_OWNER/TEMPLATE_IMAGE_NAME`.
+- Windows entry points are `run.bat`, `start.bat`, and `stop.bat`.
+- The release workflow publishes versioned `x.y.z` and `x.y` tags from `master`.
+- Runtime integration details belong in the README contract section and `compose.yml`, not only in scripts.
+
+### Changelog Handling
+
+In this template repository, `CHANGELOG.md` tracks changes to the template itself.
+
+When creating a component repository from this template, rewrite `CHANGELOG.md` into that component's changelog: keep the Keep a Changelog and Semantic Versioning headers, remove the template release history, and start with an empty `## [Unreleased]` section or the component's first release entry. Do not carry template version entries into the generated component.

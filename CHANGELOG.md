@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Reworked third-party notices as fill-in examples instead of formal template strings.
+
 ---
 
-## [0.1.0] - YYYY-MM-DD
+## [1.0.1] - 2026-05-09
 
 ### Added
 
-- Initial TEMPLATE_PROJECT_TITLE container.
+- Added example third-party notice templates.
+
+---
+
+## [1.0.0] - 2026-05-08
+
+### Added
+
+- Initial Hex component repository template.
