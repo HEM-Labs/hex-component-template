@@ -8,9 +8,10 @@ tasks:
   # Project management
 
   update:
-    desc: Update the repo from upstream
+    desc: Update the repo from upstream and pull container images
     cmds:
       - git pull
+      - docker compose pull
 
   version:
     desc: Show the current project version

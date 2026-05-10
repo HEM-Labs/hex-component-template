@@ -23,7 +23,7 @@ Replace this section with the runtime contract this container offers to other He
 
 ## Run
 
-For end users on Windows, use the batch files to pull and run the published image:
+For end users on Windows, use the batch files to run the published image:
 
 ```bat
 run.bat
@@ -50,6 +50,12 @@ down.bat
 ```
 
 This removes the component containers and Compose network. It does not delete Docker volumes; component-specific persistent data removal should be documented separately when needed.
+
+Update the local repository and pull newer published images:
+
+```bat
+update.bat
+```
 
 The batch files use the same `compose.yml` as development, but run with `--no-build` so Docker uses the published GHCR image.
 
@@ -120,6 +126,7 @@ When adapting the template, preserve the Hex conventions where they still apply:
 
 - Published image names use `ghcr.io/TEMPLATE_GHCR_OWNER/TEMPLATE_IMAGE_NAME`.
 - Windows entry points are `run.bat`, `start.bat`, `stop.bat`, and `down.bat`.
+- `update.bat` should run `git pull` and `docker compose pull` so normal startup remains fast while updates explicitly refresh both repository files and published images.
 - The release workflow publishes versioned `x.y.z` and `x.y` tags from `master`.
 - Runtime integration details belong in the README contract section and `compose.yml`, not only in scripts.
 
